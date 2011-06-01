@@ -1,0 +1,18 @@
+{application, pusherl,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  sasl,
+                  crypto
+                 ]},
+  {mod, { pusherl_app, []}},
+  {env, [
+    {pusher_app_id, "your_app_id_as_list"},
+    {pusher_key, "your_key_as_list"},
+    {pusher_secret, "your_secret_as_list"}
+  ]}
+ ]}.

@@ -1,0 +1,24 @@
+I always do the README last, so I apologize for the docs being crappy. This implementation however, is very straight forward.
+
+This application is running atop Basho's rebar. Therefore, you can get a simple terminal-version running by following these directions:
+
+1. Look in src/pusherl.app.src and replace the configurable pusher application variables with your application's credentials.
+2. In your terminal (I'm assuming you have Erlang R14B02 or higher installed) do the following:
+./rebar get-deps
+./rebar compile
+./rebar generate
+
+and finally to start an interactive console:
+./rel/pusherl/bin/pusherl console
+
+3. You may now execute push commands to pusher with the following:
+
+If you wish to perform synchronous pushes:
+	gen_server:call({push, {"ChannelName", "EventName", "Payload"}}).
+	
+If you wish to perform asynchronous pushes (this is asynchronous at the gen_server level, not the httpc level...yet):
+	gen_server:cast({push, {"ChannelName", "EventName", "Payload"}}).
+	
+This application includes mochiweb for it's fantastic json de/encoding. I have not yet extensively tested that it works in all cases with json.
+
+Thanks.
