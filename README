@@ -13,6 +13,19 @@ and finally to start an interactive console:
 
 3. You may now execute push commands to pusher with the following:
 
+A quick caveat I'd like to point out. If you are building this as a stand-alone release (not in another otp app) to try it out, you will want to to the following:
+On line 2 of rel/reltool.config you will see something like this
+
+ {lib_dirs, ["../../"]},
+
+You will want to change it to this
+
+  {lib_dirs, ["../deps","../../"]},
+
+Yes, include the comma at the end.
+
+USAGE
+
 If you wish to perform synchronous pushes:
 	gen_server:call({push, {"ChannelName", "EventName", "Payload"}}).
 	
